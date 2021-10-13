@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items; let i = index">
+          <tr *ngFor="let item of getItems(); let i = index">
             <td>{{i + 1}}</td>
             <td>{{item.description}}</td>
             <td>{{item.status}}</td>
@@ -30,7 +30,7 @@
       </table>
 
       <ul>
-        <li *ngFor="let item of items; let i = index">
+        <li *ngFor="let item of getItems(); let i = index">
           {{item}}
         </li>
       </ul>
