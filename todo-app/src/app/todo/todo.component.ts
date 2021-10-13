@@ -5,11 +5,23 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  private name= "Burak";
 
+  // items = [
+  //   "item 1", "item 2", "item 3"
+  // ]
+
+  items = [
+    {description: "kahvaltı", status: "yes"},
+    {description: "spor", status: "yes"},
+    {description: "alışveriş", status: "no"}
+  ]
+
+  getName() {
+    return this.name
+  }
 }

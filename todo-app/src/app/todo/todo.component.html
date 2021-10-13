@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-5 mx-auto">
       <h3 class="bg-primary text-white p-3">
-        Todo list
+        {{getName()}} Todo list
       </h3>
       <div class="input-group mb-3">
         <input type="text" class="form-control" />
@@ -21,23 +21,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Kahvaltı</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Spor</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>alışveriş</td>
-            <td>No</td>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.status}}</td>
           </tr>
         </tbody>
       </table>
+
+      <ul>
+        <li *ngFor="let item of items; let i = index">
+          {{item}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
