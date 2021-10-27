@@ -4,9 +4,10 @@
       <h3 class="bg-primary text-white p-3">
         {{getName()}} Todo list
       </h3>
+      {{message}}
       <div class="input-group mb-3">
-        <input type="text" class="form-control" />
-        <button class="btn btn-outline-primary">Add</button>
+        <input #todo type="text" class="form-control" (keyup.enter)="addItem(todo.value); todo.value=''"/>
+        <button class="btn btn-outline-primary" (click)="addItem(todo.value); todo.value=''">Add</button>
       </div>
       <div class="form-check mb-3">
         <input type="checkbox" class="form-check-input" name="" id="displayAll" />
@@ -28,12 +29,6 @@
           </tr>
         </tbody>
       </table>
-
-      <ul>
-        <li *ngFor="let item of getItems(); let i = index">
-          {{item}}
-        </li>
-      </ul>
     </div>
   </div>
 </div>

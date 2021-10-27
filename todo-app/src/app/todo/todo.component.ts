@@ -9,19 +9,9 @@ import { TodoItem } from '../todoItem';
 })
 export class TodoComponent {
 
+  message = "";
+
   constructor() { }
-
-  // items: TodoItem[] = [
-  //   new TodoItem("kahvaltı", "yes"),
-  //   new TodoItem("spor", "yes"),
-  //   new TodoItem("alışveriş", "no")
-  // ]
-
-  // items: TodoItem[] = [
-  //   {description: "kahvaltı", status: "yes"},
-  //   {description: "spor", status: "yes"},
-  //   {description: "alışveriş", status: "no"},
-  // ]
 
   todoModel = new Model()
 
@@ -32,5 +22,13 @@ export class TodoComponent {
 
   getItems() {
     return this.todoModel.items
+  }
+
+  addItem(value: string) {
+    if(value != '') {
+      this.todoModel.items.push({description: value, status: 'no'});
+    } else {
+      alert('todo boş gönderilemez');
+    }
   }
 }
