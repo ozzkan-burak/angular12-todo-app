@@ -20,5 +20,5 @@
 
 export interface TodoItem {
   description: string;
-  status: string;
+  status: boolean;
 }

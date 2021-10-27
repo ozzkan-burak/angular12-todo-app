@@ -4,14 +4,15 @@
       <h3 class="bg-primary text-white p-3">
         {{getName()}} Todo list
       </h3>
-      {{message}}
+
       <div class="input-group mb-3">
         <input #todo type="text" class="form-control" (keyup.enter)="addItem(todo.value); todo.value=''"/>
         <button class="btn btn-outline-primary" (click)="addItem(todo.value); todo.value=''">Add</button>
       </div>
       <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" name="" id="displayAll" />
+        <input type="checkbox" [(ngModel)]="displayAll" class="form-check-input" name="" id="displayAll" />
         <label for="displayAll" class="form-check-label">Show All</label>
+
       </div>
       <table class="table table-bordered">
         <thead>
@@ -26,6 +27,7 @@
             <td>{{i + 1}}</td>
             <td>{{item.description}}</td>
             <td>{{item.status}}</td>
+            <td><input type="checkbox" [(ngModel)]="item.status" class="form-checkbox-input" /></td>
           </tr>
         </tbody>
       </table>

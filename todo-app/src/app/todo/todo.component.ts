@@ -9,7 +9,7 @@ import { TodoItem } from '../todoItem';
 })
 export class TodoComponent {
 
-  message = "";
+  displayAll: boolean = false;
 
   constructor() { }
 
@@ -21,12 +21,15 @@ export class TodoComponent {
   };
 
   getItems() {
-    return this.todoModel.items
+    if(this.displayAll) {
+      return this.todoModel.items
+    }
+    return this.todoModel.items.filter(item => item.status === false);
   }
 
   addItem(value: string) {
     if(value != '') {
-      this.todoModel.items.push({description: value, status: 'no'});
+      this.todoModel.items.push({description: value, status: false});
     } else {
       alert('todo boş gönderilemez');
     }
