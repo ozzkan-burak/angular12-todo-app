@@ -73,7 +73,7 @@
                   <ng-template #yesTemplate>Yes</ng-template>
 
               </td>
-              <td><input type="checkbox" [(ngModel)]="item.status" class="form-checkbox-input" /></td>
+              <td><input type="checkbox" (change)="onActionChanged(item)" [(ngModel)]="item.status" class="form-checkbox-input" /></td>
             </tr>
           </tbody>
         </table>
