@@ -12,7 +12,9 @@ export class TodoComponent {
   displayAll: boolean = false;
   inputText: string = "";
 
-  constructor() { }
+  constructor() {
+    this.todoModel.items = this.getItemsFromLocalStorage();
+  }
 
   todoModel = new Model()
 
@@ -30,11 +32,43 @@ export class TodoComponent {
 
   addItem() {
     if(this.inputText!= '') {
-      this.todoModel.items.push({description: this.inputText, status: false});
+      let data = {description: this.inputText, status: false}
+      this.todoModel.items.push(data);
+
+      let items = this.getItemsFromLocalStorage();
+      items.push(data)
+
+      localStorage.setItem("items", JSON.stringify(items))
       this.inputText = '';
     } else {
       alert('todo boş gönderilemez');
     }
+  }
+
+  getItemsFromLocalStorage() {
+    let items: TodoItem[] = []
+
+    let value = localStorage.getItem("items");
+
+    if(value != null) {
+      items = JSON.parse(value);
+    }
+
+    return items
+  }
+
+  onActionChanged(item:TodoItem) {
+    let items = this.getItemsFromLocalStorage();
+
+    localStorage.clear();
+
+    items.forEach(i => {
+      if(i.description == item.description) {
+        i.status = item.status
+      }
+    });
+
+    localStorage.setItem("items", JSON.stringify(items));
   }
 
   displayCount() {
