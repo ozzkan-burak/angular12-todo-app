@@ -10,6 +10,7 @@ import { TodoItem } from '../todoItem';
 export class TodoComponent {
 
   displayAll: boolean = false;
+  inputText: string = "";
 
   constructor() { }
 
@@ -27,11 +28,24 @@ export class TodoComponent {
     return this.todoModel.items.filter(item => item.status === false);
   }
 
-  addItem(value: string) {
-    if(value != '') {
-      this.todoModel.items.push({description: value, status: false});
+  addItem() {
+    if(this.inputText!= '') {
+      this.todoModel.items.push({description: this.inputText, status: false});
+      this.inputText = '';
     } else {
       alert('todo boş gönderilemez');
+    }
+  }
+
+  displayCount() {
+    return this.todoModel.items.filter(i => i.status).length;
+  }
+
+  getBtnClasses() {
+    return{
+      'disabled': this.inputText.length == 0,
+      'btn-secondary': this.inputText.length == 0,
+      'btn-primary': this.inputText.length > 0
     }
   }
 }
